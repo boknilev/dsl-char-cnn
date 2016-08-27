@@ -4,6 +4,9 @@
 # log dir
 log*
 
+# keras model files
+*.hdf5
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
