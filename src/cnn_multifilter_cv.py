@@ -52,7 +52,7 @@ fc_dropout = 0.5
 print('Fully-connected dropout:', fc_dropout)
 
 # cross validation
-n_folds = 5
+n_folds = 10
 
 print('Loading data...')
 X_train, y_train, num_classes = load_file(full_train_file, alphabet)
@@ -151,7 +151,7 @@ for k, (train, test) in enumerate(skf):
     model = make_model(maxlen, alphabet_size, embedding_dims, embedding_droupout,
                nb_filters, filter_lengths, hidden_dims, fc_dropout, 
                num_classes)
-    acc = train_and_evaluate_model(model, X_train[train], Y_train[train], X_train[test], Y_train[test], y_train[test], k)
+    acc = train_and_evaluate_model(model, X_train[train], Y_train[train], X_train[test], Y_train[test], y_train[test], k+1)
     accuracies.append(acc)
 print('Accuracies of all folds:')
 print(accuracies)

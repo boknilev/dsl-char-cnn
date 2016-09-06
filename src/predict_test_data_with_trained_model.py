@@ -18,10 +18,10 @@ maxlen = 400
 
 
 # file with only texts, no labels
-evaluation_test_file = "../data/dev_texts.txt"
-predictions_file = evaluation_test_file + ".pred"
-probabilities_file = evaluation_test_file+ ".prob"
-model_file = "cnn_model_gpu_multifilter.hdf5"
+evaluation_test_file = "../data/C.txt"
+predictions_file = evaluation_test_file + ".fulltrain.pred"
+probabilities_file = evaluation_test_file+ ".fulltrain.prob"
+model_file = "cnn_model_gpu_multifilter_fulltrain.hdf5"
 idx2label = load_labels(labels_file)
 
 model = load_model(model_file)
