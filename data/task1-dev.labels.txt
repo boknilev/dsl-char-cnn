@@ -1,0 +1,12 @@
+pt-BR
+sr
+fr-CA
+es-AR
+es-MX
+hr
+fr-FR
+bs
+my
+pt-PT
+es-ES
+id

@@ -40,6 +40,9 @@ for model_file in os.listdir('.'):
         print('Predicting with model:', model_file)
         model = load_model(model_file)
         probabilities = model.predict(X_test, batch_size=batch_size)
+        prob_file= model_file + '.' + os.path.basename(evaluation_test_file) + '.prob'
+        print('Writing probabilities to file:', prob_file)
+        write_probabilities_to_file(evaluation_test_file, prob_file, probabilities)
         all_probs.append(probabilities)
 
 # majority vote

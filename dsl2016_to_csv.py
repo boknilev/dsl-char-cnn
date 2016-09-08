@@ -1,7 +1,7 @@
 # Convert a DSL 2016 file (task 2) to a csv file
 
 
-import sys
+import sys, codecs
 
 
 def get_labels(dsl_filename, task=2):
@@ -10,6 +10,8 @@ def get_labels(dsl_filename, task=2):
     labels = set()
     with open(dsl_filename) as f:
         for line in f:
+            if line.strip() == '':
+                continue
             if task == 2:
                 _, _, label = line.strip().split('\t')
             else:
@@ -22,8 +24,9 @@ def get_labels(dsl_filename, task=2):
 def convert_file(dsl_filename, csv_filename, label2id, task=2):
 
     assert task == 2 or task == 1, 'unknown task: ' + str(task) + '\n'
-    with open(dsl_filename) as f:
-        with open(csv_filename, 'w') as g:
+    encoding = 'utf-8' if task == 1 else None
+    with codecs.open(dsl_filename, encoding=encoding) as f:
+        with codecs.open(csv_filename, 'w', encoding=encoding) as g:
             for line in f:
                 if task == 2:
                     text, _, label = line.strip().split('\t')
@@ -47,7 +50,7 @@ if __name__ == '__main__':
     if len(sys.argv) == 4:
         run(sys.argv[1], sys.argv[2], sys.argv[3])
     elif len(sys.argv) == 5:
-        run(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
+        run(sys.argv[1], sys.argv[2], sys.argv[3], int(sys.argv[4]))
     else:
         print 'USAGE: python ' + sys.argv[0] + ' <dsl file> <csv file> <labels file> [<task>]'
 
