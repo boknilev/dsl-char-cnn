@@ -16,6 +16,7 @@ task1_train_file = '../data/task1-train.csv'
 task1_test_file = '../data/task1-dev.csv'
 task1_labels_file = '../data/task1-train.labels.txt'
 task1_alphabet_file = '../data/task1-train.alphabet.txt'
+task1_B_labels_file = '../data/task1-test-B.labels.txt'
 
 # linguistic features
 # features from: http://link.springer.com/chapter/10.1007/978-981-10-0515-2_3
@@ -304,3 +305,27 @@ def get_task1_alphabet():
     with codecs.open(task1_alphabet_file, encoding='utf-8') as f:
         alphabet = f.read().strip()
     return alphabet
+
+
+def predict_with_allowed_labels(probabilities, idx2label, allowed_labels):
+    """
+    Predict from a set of allowed labels
+    
+    probabilities: 2d array of examples by label probabilities
+    returns: predictions: list of indexes of best allowed labels
+
+    Use in test sets B1/2, where we have a limited set of labels.
+    """
+    predictions = []
+    for probs in probabilities:
+        for idx, prob in sorted(enumerate(probs), key=itemgetter(1), reverse=True):
+            if idx2label[idx] in allowed_labels:
+                predictions.append(idx)
+                break
+        else:
+            sys.stderr.write('Warning: could not find allowed label in predict_with_allowed_labels\n')
+    assert len(predictions) == len(probabilities), 'bad predictions in predict_with_allowed_labels\n'
+    return predictions
+
+        
+

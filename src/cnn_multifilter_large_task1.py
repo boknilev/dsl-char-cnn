@@ -163,4 +163,4 @@ print(acc)
 labels = [label for (idx, label) in sorted(idx2label.items())]
 score_report = classification_report(y_test, predictions, target_names=labels)
 print('Score report:')
-moredrop-print(score_report)
+print(score_report)

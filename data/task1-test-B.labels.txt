@@ -1,0 +1,5 @@
+bs
+hr
+sr
+pt-BR
+pt-PT
