@@ -22,7 +22,7 @@ This will create a file with predictions under `data`. It will also create a fil
 Note: file names are currently hard-coded in several places (e.g. model files in the train and test scripts, and data files in `data.py`.
 
 ## Citating
-If you use this code in your work, please consider citing our paper: "A Character-level Convolutional Neural Network for Distinguishing Similar Languages and Dialects", Yonatan Belinkov and James Glass, VarDial 2016.
+If you use this code in your work, please consider citing our [paper](http://aclweb.org/anthology/W/W16/W16-4819.pdf): "A Character-level Convolutional Neural Network for Distinguishing Similar Languages and Dialects", Yonatan Belinkov and James Glass, VarDial 2016.
 
 ```bib
 @InProceedings{belinkov-glass:2016:VarDial,
