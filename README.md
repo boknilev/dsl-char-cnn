@@ -38,3 +38,5 @@ If you use this code in your work, please consider citing our [paper](http://acl
 ### TODO
 * Clean code
 
+### Acknowledgements
+This implementation uses code from [François Chollet's IMBC CNN example](https://github.com/fchollet/keras/blob/master/examples/imdb_cnn.py).
